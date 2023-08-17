@@ -1,5 +1,6 @@
 package edu.icet.MyProject.controller;
 
+import edu.icet.MyProject.dto.UserDTO;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -11,7 +12,8 @@ public class UserController {
         return "Simple-Root";
     }
     @PostMapping("/saveUser")
-    public String saveUser(){
+    public String saveUser(@RequestBody UserDTO userDTO){
+
         return "User Saved !";
     }
     @PutMapping("/updateUser")

@@ -1,27 +1,37 @@
 package edu.icet.MyProject.controller;
 
 import edu.icet.MyProject.dto.UserDTO;
+import edu.icet.MyProject.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "api/v1/user")
 @CrossOrigin
 public class UserController {
-    @GetMapping("/getUser")
-    public String getUser(){
-        return "Simple-Root";
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/getUsers")
+    public List<UserDTO> getUser(){
+
+        return userService.getAllUsers();
     }
     @PostMapping("/saveUser")
-    public String saveUser(@RequestBody UserDTO userDTO){
+    public UserDTO saveUser(@RequestBody UserDTO userDTO){
+        return userService.saveUser(userDTO);
 
-        return "User Saved !";
     }
     @PutMapping("/updateUser")
     public String updateUser(){
+
         return "User Updated !";
     }
     @DeleteMapping("/deleteUser")
     public String deleteUser(){
+
         return "User Deleted !";
     }
 }

@@ -16,5 +16,4 @@ public class Main {
 	public ModelMapper modelMapper(){
 		return new ModelMapper();
 	}
-
 }
